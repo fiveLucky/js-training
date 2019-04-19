@@ -1,0 +1,2 @@
+# js-trainning
+learn js
