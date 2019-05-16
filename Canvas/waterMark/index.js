@@ -45,7 +45,14 @@ var waterMark = {
     img.width = '100%';
     img.height = '100%';
     img.onload = function () {
-
+      // 创建canvas
+      var canvas = document.createElement('canvas');
+      canvas.width = '200';
+      canvas.hight = '200';
+      var ctx = canvas.getContext('2d');
+      // 画图片
+      // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+      ctx.drawImage(img, 0, 0)
     }
   }
 

@@ -1,0 +1,23 @@
+{
+  "name": "jstrainning",
+  "version": "1.0.0",
+  "description": "study",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fiveLucky/jsTrainning.git"
+  },
+  "author": "wenjie.xu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fiveLucky/jsTrainning/issues"
+  },
+  "homepage": "https://github.com/fiveLucky/jsTrainning#readme",
+  "devDependencies": {
+    "koa": "^2.7.0"
+  }
+}

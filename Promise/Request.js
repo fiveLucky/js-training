@@ -11,9 +11,6 @@ function parseParamToUri(uri, data, method) {
 }
 
 
-
-
-
 class Request {
   static unique = new Request();
   constructor() {
@@ -81,12 +78,3 @@ class Request {
 
 export default new Request()
 
-// test
-
-const request = new Request();
-
-Array(25).fill('https://www.baidu.com').forEach((uri,index) => {
-  request.get(uri).then(()=> {
-    console.info('im ok',index)
-  })
-});
