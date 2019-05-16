@@ -21,29 +21,22 @@ class Request {
     if (Request.unique) {
       return Request.unique
     }
-    this.stashPromiseList = [];
-    this.notPenddingPromise = null;
-    this.superStashPromiseList = [];
-    this.promiseIndex = 0;
+   this.running_count = 0;
+   this.await_queue = [];
+   this.max_limit = 10;
   }
-  _fetch(uri, options) {
-
+  async _fetch(uri, options) {
     const defaultOptions = {
-      // default options
-
       ...options,
       headers: {
-
         ...options.headers,
       }
     }
-    if (this.stashPromiseList.length > 5) {
-      return Promise.reject('超过最大并发数');
+    if (this.running_count === this.max_limit) {
+       await this._wait();
     }
     return new Promise((resolve, reject) => {
-      this.promiseIndex += 1;
-      const index = this.promiseIndex - 1;
-      this.stashPromiseList.push(index);
+      this.running_count += 1;
       fetch(uri, options).then(response => {
         const isJsonData = response.headers.get('content-type').indexOf('application/json') > -1;
         if (isJsonData) {
@@ -58,9 +51,21 @@ class Request {
       }).catch((err) => {
         reject(err);
       }).finally(() => {
-        this.stashPromiseList.splice(index);
+        this.running_count -= 1;
+        this._letsGo();
       })
     })
+  }
+  _wait(){
+    return new Promise((res) => {
+      this.await_queue.push(res);
+    })
+  }
+  _letsGo(){
+    if(this.await_queue.length === 0){
+      return
+    } 
+    this.await_queue.shift()();
   }
   get(uri) {
     return this._fetch(uri, {
@@ -74,5 +79,14 @@ class Request {
   }
 }
 
-var request = new Request();
+export default new Request()
 
+// test
+
+const request = new Request();
+
+Array(25).fill('https://www.baidu.com').forEach((uri,index) => {
+  request.get(uri).then(()=> {
+    console.info('im ok',index)
+  })
+});
