@@ -54,6 +54,7 @@ var waterMark = {
       // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
       ctx.drawImage(img, 0, 0)
     }
+    img.url = url;
   }
 
 
