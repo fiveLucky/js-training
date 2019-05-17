@@ -31,7 +31,15 @@
     <text class="text">这是图片</text>
   </svg>
   <script type="module">
-    // origin 必须有，才能用module，所以得起个服务
+    /**
+     * 报错：
+     * Failed to load module script: The server responded with a 
+     * non-JavaScript MIME type of "text/html". Strict MIME type checking 
+     * is enforced for module scripts per HTML spec.
+     * 解决方法：
+     * 第一种方式：使用koa-static中间件，自动处理静态文件请求响应
+     * 第二种方式：如果自己处理请求，需要对特定文件类型指定 conten-type
+     * */ 
 
     import request from './Promise/request.js';
     import waterMark from './Canvas/waterMark/index.js';
