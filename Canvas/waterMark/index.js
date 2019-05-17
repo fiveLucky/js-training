@@ -36,27 +36,29 @@ var waterMark = {
 
     document.body.appendChild(canvas);
     document.body.appendChild(container);
-  }
+  },
 
   pictureMark: function (url) {
     var img = new Image();
-
     img.src = url;
-    img.width = '100%';
-    img.height = '100%';
+    // 创建canvas
+    var canvas = document.createElement('canvas');
+    canvas.width = '200';
+    canvas.height = '200';
+    var ctx = canvas.getContext('2d');
     img.onload = function () {
-      // 创建canvas
-      var canvas = document.createElement('canvas');
-      canvas.width = '200';
-      canvas.hight = '200';
-      var ctx = canvas.getContext('2d');
       // 画图片
       // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
       ctx.drawImage(img, 0, 0)
+      ctx.font = '30px Microsoft YaHei';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = "red";
+      ctx.fillText('picture', 100, 100)
     }
-    img.url = url;
+    document.body.appendChild(canvas)
+
   }
-
-
-
 }
+
+export default waterMark;

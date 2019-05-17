@@ -6,19 +6,19 @@ const fs = require('fs');
 const exec = require('child_process').exec;
 
 // 第一种方式：使用koa-static中间件
-// app.use(koaStatic(__dirname))
+app.use(koaStatic(__dirname))
 
 
 // 第二种方式：设置响应
-app.use(ctx => {
-  const typeMap = {
-    'js': 'text/javascript',
-    '/': 'text/html',
-  }
-  ctx.type = typeMap[ctx.url.split('.').pop()];
-  if (ctx.url === '/') ctx.url = '/index.html';
-  ctx.body = fs.readFileSync(__dirname + ctx.url, 'utf8');
-})
+// app.use(ctx => {
+//   console.log(ctx.url)
+//   const typeMap = {
+//     'js': 'text/javascript',
+//   }
+//   ctx.type = typeMap[ctx.url.split('.').pop()] || 'text/html';
+//   if (ctx.url === '/') ctx.url = '/index.html';
+//   ctx.body = fs.readFileSync(__dirname + ctx.url, 'utf8');
+// })
 
 
 app.listen(4000)
