@@ -1,12 +1,14 @@
 # postMessage 方法的小坑
+![postMessage](https://upload-images.jianshu.io/upload_images/3504920-ef611f6ef12a24d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-[MDN简介](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage)
+### 知识点
+[MDN对postMessage方法的介绍](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage)
 
 ### 场景
 
 在很多时候，我们会遇到编辑操作，点击编辑按钮打开一个新页面，在新页面操作完成之后，需要对父页面做操作，比如：列表刷新。这时需要两个窗口通信，通信方式有很多，比如：在父页面window上添加一些callbackId，然后子页面的`window.opener[callbackId]`调用对应函数。但是为了支持 electron（[新的页面的window.opener是一个被electron重写的对象，只有window的少数方法和属性](https://electronjs.org/docs/api/browser-window-proxy)），所以选择 postMessage。想要把 postMessage 和 addEventListener 这种异步通信方式封装成 promise 形式，所以就踩了个坑。
 
-### 代码
+### 方案&代码
 
 ```js
 
@@ -74,6 +76,6 @@
 
 ### 总结
 
-- 在promise里，postMessage 传输的数据只能为字符串
+- **在promise里，postMessage 传输的数据只能为字符串**
 - JSON.stringify 会过滤掉数据里的函数、Symbol、undefined
 - window.addEventListener(type,cb, option ), option.once = true 时，只会调用一次listener，然后这个type的listener都会被 remove，参考[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener)
