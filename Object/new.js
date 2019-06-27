@@ -22,3 +22,14 @@ function myNew(func, ...arg) {
   return target
 }
 
+
+// test
+
+function A(desc) {
+  this.a = 'a';
+  this.desc = desc;
+}
+A.prototype.getA = () => this.a
+
+myNew(A)
+new A()
