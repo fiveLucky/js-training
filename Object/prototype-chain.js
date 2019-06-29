@@ -1,5 +1,7 @@
 /**
  * 原型链
+ * 对象间通过 __proto__ 进行原型查找
+ * 
  * 图示：
  * 
  *                     Person.prototype
