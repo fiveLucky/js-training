@@ -46,7 +46,6 @@ function validParentheses(str) {
     '(': ')',
   }
   const stack = [];
-  debugger
   for (let i in pStr) {
     const item = pStr[i];
     if (['{', '[', '('].indexOf(item) > -1) {
