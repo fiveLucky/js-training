@@ -16,4 +16,3 @@ function strip1(arr) {
 function strip2(arr) {
   return [...new Set(arr)]
 }
-
