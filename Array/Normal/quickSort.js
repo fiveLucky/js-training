@@ -2,7 +2,7 @@
  * 快速排序
  */
 
-function quikSort(arr) {
+function quickSort(arr) {
   if (arr.length <= 1) {
     return arr;
   }
@@ -23,7 +23,7 @@ function quikSort(arr) {
   });
 
   // 递归循环
-  return quikSort(left).concat(base, quikSort(right))
+  return quickSort(left).concat(base, quickSort(right))
 }
 
 
@@ -31,4 +31,4 @@ function quikSort(arr) {
 
 var arr = [23, 56, 77, 4, 45, 24, 29, 54];
 
-quikSort(arr)
+quickSort(arr)
