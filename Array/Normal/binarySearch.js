@@ -7,7 +7,7 @@ function binarySearch(arr, target) {
   var end = arr.length - 1;
 
   while (start <= end) {
-    var mid = parseInt(start + ((end - start) / 2), 10);
+    var mid = parseInt((start + end) / 2, 10);
     if (target === arr[mid]) {
       return mid
     } else if (target > arr[mid]) {
