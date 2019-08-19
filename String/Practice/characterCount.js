@@ -2,14 +2,13 @@
  * 字符出现的次数
  */
 
-
 function getCount(str) {
-  const arr = [...new Set(str.split(''))];
-  let obj = {}
+  const arr = [...new Set(str.split(""))];
+  let obj = {};
   arr.forEach(k => {
     obj[k] = str.split(k).length - 1;
-  })
-  return obj
+  });
+  return obj;
 }
 
 function getCount2(str) {
@@ -24,7 +23,7 @@ function getCount2(str) {
   }
 
   var num = 0;
-  var char = '';
+  var char = "";
   for (var key in obj) {
     if (obj[key] > num) {
       num = obj[key];
@@ -32,13 +31,11 @@ function getCount2(str) {
     }
   }
 
-  return { num, char }
-
+  return { num, char };
 }
-
 
 // test
 
-var s = 'wewerereeeeeee2423432sdfdsff';
-getCount(s)
-getCount2(s)
+var s = "wewerereeeeeee2423432sdfdsff";
+getCount(s);
+getCount2(s);
