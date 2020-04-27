@@ -43,8 +43,15 @@ class Promise {
     if (!callback) {
       // throw error
     }
-    this._value = callback(this._value);
-    return this;
+    return new Promise((res, rej) => {
+      try {
+        this._value = callback(this._value);
+        res(this.value);
+      } catch (e) {
+        rej(e)
+      }
+
+    })
   }
 
   catch(callback) {
