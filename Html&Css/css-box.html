@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS BOX</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background: skyblue;
+        padding: 10px;
+        margin: 10px;
+        border: 10px solid red;
+        /* 怪异盒模型： 盒子的宽高 = (元素的宽高 = 样式设置的宽高 = border + padding + content) + margin */
+        box-sizing: border-box;
+        /* 标准盒模型： 盒子的宽高 = (元素的宽高 = 样式设置的宽高（content） + padding + border) + margin */
+        box-sizing: content-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="box"></div>
+  </body>
+  <script>
+    const div = document.getElementById("box");
+    console.log(div);
+    alert("a");
+  </script>
+</html>
