@@ -3,8 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>CSS BOX</title>
     <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        font-size: 1rem;
+      }
       .box {
         width: 100px;
         height: 100px;
@@ -17,14 +26,40 @@
         /* 标准盒模型： 盒子的宽高 = (元素的宽高 = 样式设置的宽高（content） + padding + border) + margin */
         box-sizing: content-box;
       }
+      .rem {
+        /* rem：相对于 html font-size 为基准 */
+        font-size: 28px;
+        width: 30rem;
+        height: 4rem;
+        background: greenyellow;
+      }
+      .next {
+        /* 这个样式未生效，原因就是 这里样式定义的顺序 早于 em-parent */
+        background: indigo;
+      }
+      .em-parent {
+        font-size: 18px;
+        background: khaki;
+      }
+      .em {
+        /* 相对于父元素 font-size 为基准 */
+        font-size: 2em;
+        width: 10em;
+        height: 2em;
+        background: green;
+      }
     </style>
   </head>
   <body>
     <div class="box" id="box"></div>
+    <div class="rem">I'm applying for a job !</div>
+    <div class="em-parent next">
+      <div class="em">This is em .</div>
+    </div>
   </body>
   <script>
     const div = document.getElementById("box");
     console.log(div);
-    alert("a");
+    console.log(window.devicePixelRatio, "window.devicePixelRatio");
   </script>
 </html>
