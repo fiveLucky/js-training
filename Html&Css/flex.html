@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex</title>
+    <style lang="css">
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        display: flex;
+        /* inline形式的flex */
+        /* display: inline-flex; */
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* space-evenly item的间距平均分配 */
+        justify-content: space-evenly;
+        /* 单行时 上下间距布局 */
+        align-items: center;
+        /* 决定多行的上下间距布局 */
+        /* align-content: center; */
+
+        height: 100px;
+        background: brown;
+        width: 600px;
+      }
+      .item {
+        /* flex: 1; */
+        background: greenyellow;
+        /* text-align: center; */
+        width: 200px;
+        /* 权重 < 父容器的 align-content */
+        align-self: flex-start;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item">This is item.</div>
+      <div class="item">This is item.</div>
+      <!-- <div class="item">This is item.</div> -->
+      <!-- <div class="item">This is item.</div>
+      <div class="item">This is item.</div>
+      <div class="item">This is item.</div>
+      <div class="item">This is item.</div>
+      <div class="item">This is item.</div> -->
+    </div>
+  </body>
+</html>
