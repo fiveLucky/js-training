@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <style lang="css">
+      /* <!-- 参考教程：http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html --> */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 100vw;
+        height: 100vh;
+        background: #678768;
+        display: grid;
+        /* 列 */
+        grid-template-columns: repeat(2, 1fr);
+        /* 行 */
+        /* grid-template-rows: repeat(autofill, 50px); */
+        gap: 20px;
+        /* 水平方向布局，是整个 grid 在父容器内的位置 */
+        justify-content: center;
+        /* 垂直方向布局 */
+        /* align-content: space-between; */
+        /* 水平方向布局，是子项的位置排列 */
+        justify-items: center;
+        /* 垂直子项布局 */
+        /* align-items: center; */
+      }
+      .container > div {
+        border: 1px solid #979797;
+        font-size: 2em;
+        /* width: 200px; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+    </div>
+  </body>
+</html>
