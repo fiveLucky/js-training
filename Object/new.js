@@ -5,7 +5,7 @@
  *  2、执行原型链接
  *  3、目标函数被执行，绑定this
  *  4、返回新对象/构造函数返回的对象
- *  
+ *
  */
 
 function myNew(func, ...arg) {
@@ -16,20 +16,21 @@ function myNew(func, ...arg) {
   // 执行函数，绑定this,
   const result = func.call(target, ...arg);
   // 判断返回值类型
-  if (result && (typeof result === 'object' || typeof result === 'function')) {
+  if (result && (typeof result === "object" || typeof result === "function")) {
     return result;
   }
-  return target
+  return target;
 }
-
 
 // test
 
 function A(desc) {
-  this.a = 'a';
+  this.a = "a";
   this.desc = desc;
 }
-A.prototype.getA = () => this.a
+A.prototype.getA = function () {
+  return this.a;
+};
 
-myNew(A)
-new A()
+myNew(A);
+new A();

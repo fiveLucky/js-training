@@ -44,63 +44,52 @@
 // 代码测试
 
 function Person(param) {
-  Object.assign(this, param)
+  Object.assign(this, param);
 }
 
 Person.prototype.getName = function () {
-  console.log(this.name)
-}
+  console.log(this.name);
+};
 
-var nextPerson = new Person({ name: 'Jack', age: 30 });
+var nextPerson = new Person({ name: "Jack", age: 30 });
 
-
-
-console.log(nextPerson) // nexttPerson 实例
-console.log(nextPerson.__proto__) // Person.prototype
-console.log(nextPerson.__proto__.__proto__) // Object.prototype
-console.log(nextPerson.__proto__.__proto__.__proto__) // null
-
+console.log(nextPerson); // nexttPerson 实例
+console.log(nextPerson.__proto__); // Person.prototype
+console.log(nextPerson.__proto__.__proto__); // Object.prototype
+console.log(nextPerson.__proto__.__proto__.__proto__); // null
 
 /**
  * 实例上找不到的属性和方法都会去原型上找
  * 而且可以修改
- * 
+ *
  *  */
 
 function Man() {
-  this.name = 'jack';
+  this.name = "jack";
   this.age = 30;
 }
 
 Man.prototype.getName = function () {
   return this.name;
-}
+};
 Man.prototype.getMsg = function () {
-  // 可以访问构造函数
-  return this.constructor.otherMsg;
-}
+  // 可以访问构造函数 下面三种方式等价
+  // return this.constructor.otherMsg;
+  // return Man.prototype.constructor.otherMsg;
+  return Man.otherMsg;
+};
 
-Man.otherMsg = 'this is a very strong man';
+Man.otherMsg = "this is a very strong man";
 
 var person = new Man();
 
-console.log(person.getMsg())
-console.log(person.getName())
+console.log(person.getMsg());
+console.log(person.getName());
 
 // 实例修改构造函数的属性 两种方式
 // 手动访问原型的构造函数属性
-person.__proto__.constructor.otherMsg = 'hhh';
+person.__proto__.constructor.otherMsg = "hhh";
 // 这种方式是自动访问原型了
 person.constructor.otherMsg = null;
 
-
-console.log(person.getMsg())
-
-
-
-
-
-
-
-
-
+console.log(person.getMsg());
