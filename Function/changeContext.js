@@ -6,9 +6,13 @@
  *  1、fn 的 this 指向改变了
  *  2、fn 执行了，可能有返回值
  *  3、call 支持传参，数量不限
+ *  4、Function.prototype.call() 返回undefined
  */
 
 Function.prototype.myCall = function (context, ...arg) {
+  if (this === Function.prototype) {
+    return;
+  }
   const target = context || window;
   // 改变 fn 的 this
   target.__fn = this;
@@ -22,6 +26,9 @@ Function.prototype.myCall = function (context, ...arg) {
 
 // 不使用 es6 语法
 Function.prototype.myCall = function (context) {
+  if (this === Function.prototype) {
+    return;
+  }
   var target = context || window;
   // 改变 fn 的 this
   target.__fn = this;
@@ -47,12 +54,12 @@ Function.prototype.myCall = function (context) {
  *  3、apply 支持传参，参数是数组
  */
 
-Function.prototype.myApply = function (context, arg) {
+Function.prototype.myApply = function (context, arg = []) {
   const target = context || window;
   // 改变 fn 的 this
   target.__fn = this;
   // 执行 传参
-  const result = target.__fn(arg);
+  const result = target.__fn(...arg);
   // 删除
   delete target.__fn;
   // 返回值
@@ -61,6 +68,9 @@ Function.prototype.myApply = function (context, arg) {
 
 // 不使用 es6 语法
 Function.prototype.myApply = function (context, arr) {
+  if (this === Function.prototype) {
+    return;
+  }
   var target = context || window;
   // 改变 fn 的 this
   target.__fn = this;
@@ -68,8 +78,10 @@ Function.prototype.myApply = function (context, arr) {
   var result,
     arg = [];
 
-  for (var index = 0; index < arr.length; index++) {
-    arg.push("arr[" + index + "]");
+  if (arr instanceof Array) {
+    for (var index = 0; index < arr.length; index++) {
+      arg.push("arr[" + index + "]");
+    }
   }
 
   // 执行 传参
