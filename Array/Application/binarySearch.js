@@ -9,14 +9,14 @@ function binarySearch(arr, target) {
   while (start <= end) {
     var mid = parseInt((start + end) / 2, 10);
     if (target === arr[mid]) {
-      return mid
+      return mid;
     } else if (target > arr[mid]) {
       start = mid + 1;
     } else {
       end = mid - 1;
     }
   }
-  return -1
+  return -1;
 }
 
 // test
@@ -25,7 +25,6 @@ var a = [1, 2, 3, 4, 5, 6, 7];
 
 binarySearch(a, 9); // -1
 binarySearch(a, 4); // 3
-
 
 /**
  * 查找某个元素是否存在
@@ -41,7 +40,7 @@ function find(source, target) {
   while (y >= 0 && x < source[0].length) {
     const value = source[y][x];
     if (value === target) {
-      return [y, x]
+      return [y, x];
     } else if (value > target) {
       y--;
     } else {
@@ -57,12 +56,9 @@ function find(source, target) {
 var arr = [
   [1, 2, 3],
   [4, 5, 6],
-  [7, 8, 9]
+  [7, 8, 9],
 ];
-find(arr, 6)
-
-
-
+find(arr, 6);
 
 /**
  * 翻转链表
@@ -76,7 +72,6 @@ function reverseLinkedList(head) {
   let stash = null;
   let newhead = head;
 
-
   while (current.next) {
     currentNext = current.next;
     stash = currentNext.next;
@@ -88,43 +83,40 @@ function reverseLinkedList(head) {
   return newhead;
 }
 
-
 /**
  * 二叉树深度
  */
 
-function deepth(root) {
+function deepness(root) {
   if (!root) return 0;
-  return Math.max(deepth(root.left), deepth(root.right)) + 1;
+  return Math.max(deepness(root.left), deepness(root.right)) + 1;
 }
-
 
 // test
 
 var tree = {
-  value: 'a',
+  value: "a",
   left: {
-    value: 'b',
+    value: "b",
     left: {
-      value: 'd',
+      value: "d",
       right: {
-        value: 'h'
-      }
-    }
+        value: "h",
+      },
+    },
   },
   right: {
-    value: 'b',
+    value: "b",
     left: {
-      value: 'd',
+      value: "d",
       right: {
-        value: 'h'
-      }
-    }
-  }
-}
+        value: "h",
+      },
+    },
+  },
+};
 
-deepth(tree);
-
+deepness(tree);
 
 /**
  * 二叉树宽度
@@ -138,54 +130,53 @@ function width(root, map = {}, deep = 1) {
   }
   deep++;
   if (root.left) {
-    width(root.left, map, deep)
+    width(root.left, map, deep);
   }
   if (root.right) {
-    width(root.right, map, deep++)
+    width(root.right, map, deep++);
   }
-
 }
 
 // test
 
 var tree = {
-  value: 'a',
+  value: "a",
   left: {
-    value: 'b',
+    value: "b",
     left: {
-      value: 'd',
+      value: "d",
       right: {
-        value: 'h'
+        value: "h",
       },
       left: {
-        value: 'h'
-      }
+        value: "h",
+      },
     },
     right: {
-      value: 'd',
+      value: "d",
       right: {
-        value: 'h'
+        value: "h",
       },
       left: {
-        value: 'h',
+        value: "h",
         left: {
-          value: 'q'
-        }
-      }
-    }
+          value: "q",
+        },
+      },
+    },
   },
   right: {
-    value: 'b',
+    value: "b",
     left: {
-      value: 'd',
+      value: "d",
       right: {
-        value: 'h'
-      }
-    }
-  }
-}
+        value: "h",
+      },
+    },
+  },
+};
 
 var map = {};
 
 width(tree, map);
-console.log(map)
+console.log(map);

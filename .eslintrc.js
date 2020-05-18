@@ -16,5 +16,6 @@ module.exports = {
     "no-console": "warn",
     "no-unused-vars": 0,
     "comma-dangle": 0,
+    "no-redeclare": 0,
   },
 };
