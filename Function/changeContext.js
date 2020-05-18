@@ -120,31 +120,22 @@ Function.prototype.myBind = function (context) {
   }
   Middle.prototype = this.prototype;
 
+  // 此时的constructor属性是在原型链上 this.prototype.constructor
   bind.prototype = new Middle();
 
   return bind;
 };
 
-// test
+// test bind
 
-var obj = {
-  value: 1,
-  label: "index",
-};
+function a() {}
 
-function getValue(desc) {
-  return {
-    value: this.value,
-    label: this.label,
-    desc,
-  };
-}
+var AA = a.myBind();
+var aaa = new AA();
 
-var A = getValue.myBind(obj, "测试");
-
-var a = new A();
-
-console.log(a);
+console.log(aaa instanceof AA);
+console.log(aaa instanceof a);
+console.log(aaa.constructor);
 
 // getValue.myCall(obj, "测试");
 // getValue.myApply(obj, "测试");
