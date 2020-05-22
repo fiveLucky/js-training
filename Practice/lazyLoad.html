@@ -20,7 +20,7 @@
     <img data-src="../asset/img/car.jpeg" class="lazy" alt="" />
 
     <script>
-      (function () {
+      (function lazyLoad() {
         function throttle(fn, delay) {
           var timer = null;
           var time = 0;
@@ -44,7 +44,7 @@
           };
         }
 
-        var imgs = document.getElementsByClassName("lazy");
+        var imgList = document.getElementsByClassName("lazy");
 
         // 使用新API
 
@@ -52,8 +52,7 @@
           var lazyImageObserver = new IntersectionObserver(
             function (entries, observer) {
               entries.forEach(function (entry, index) {
-                // 有个bug
-                // 页面特别特别慢的滚动，这里的值还是0， 所以需要 threshold 设定一下，在大于 0 的时候触发回调
+                // 有个bug，页面特别特别慢的滚动，这里的值还是0， 所以需要 threshold 设定一下，在大于 0 的时候触发回调
                 console.log(entry.intersectionRatio);
                 if (entry.intersectionRatio > 0) {
                   var imgEl = entry.target;
@@ -71,8 +70,8 @@
             }
           );
 
-          for (let index = 0; index < imgs.length; index++) {
-            var img = imgs[index];
+          for (let index = 0; index < imgList.length; index++) {
+            var img = imgList[index];
             lazyImageObserver.observe(img);
           }
         } else {
@@ -83,10 +82,9 @@
           function commonLazy() {
             var viewHeight = window.innerHeight;
             var scrollTop = document.documentElement.scrollTop;
-            for (let index = imgIndex; index < imgs.length; index++) {
-              var img = imgs[index];
+            for (let index = imgIndex; index < imgList.length; index++) {
+              var img = imgList[index];
               var offsetTop = img.offsetTop;
-              console.log(offsetTop, innerHeight, scrollTop);
               if (offsetTop < viewHeight + scrollTop) {
                 var dataSrc = img.getAttribute("data-src");
                 if (img.src !== dataSrc) {
