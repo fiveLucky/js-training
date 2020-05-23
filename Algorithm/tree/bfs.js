@@ -1,9 +1,10 @@
 /**
  * @tittle  广度优先遍历
  * @description 横向遍历，利用队列先进先出的特性，把树节点从左到右依次添加到队列里，然后遍历
+ * @application 二叉树打印
  */
 
-//  从上到下 从左到右
+// 从上到下 从左到右
 function bfs(tree) {
   const result = [];
   const stack = [];
