@@ -1,12 +1,13 @@
-const Koa = require("koa");
+const Koa = require('koa');
 const app = new Koa();
-const koaStatic = require("koa-static");
+const koaStatic = require('koa-static');
 
-const fs = require("fs");
-const exec = require("child_process").exec;
+const fs = require('fs');
+const exec = require('child_process').exec;
 
 // 第一种方式：使用koa-static中间件
-app.use(koaStatic(__dirname));
+app.use(koaStatic(__dirname))
+
 
 // 第二种方式：设置响应
 // app.use(ctx => {
@@ -19,14 +20,10 @@ app.use(koaStatic(__dirname));
 //   ctx.body = fs.readFileSync(__dirname + ctx.url, 'utf8');
 // })
 
-app.listen(4000);
 
-console.log("listening port 4000");
+app.listen(4000)
+
+console.log('listening port 4000')
 // 打开默认浏览器
 // exec(" open http://localhost:4000")
-// 打开默认浏览器
-// exec(" open http://localhost:4000")
-// 打开默认浏览器
-// exec(" open http://localhost:4000")
-// 打开默认浏览器
-// exec(" open http://localhost:4000")
+
