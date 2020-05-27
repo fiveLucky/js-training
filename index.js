@@ -30,3 +30,13 @@ console.log("listening port 4000");
 // exec(" open http://localhost:4000")
 // 打开默认浏览器
 // exec(" open http://localhost:4000")
+// exec(" open http://localhost:4000")
+// 打开默认浏览器
+// exec(" open http://localhost:4000")
+// 打开默认浏览器
+// exec(" open http://localhost:4000")
+// exec(" open http://localhost:4000")
+// 打开默认浏览器
+// exec(" open http://localhost:4000")
+// 打开默认浏览器
+// exec(" open http://localhost:4000")
