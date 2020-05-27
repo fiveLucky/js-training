@@ -4,7 +4,10 @@
  * @application 二叉树打印
  */
 
-// 从上到下 从左到右
+/**
+ * 从上到下 从左到右
+ */
+
 function bfs(tree) {
   const result = [];
   const stack = [];
@@ -27,7 +30,9 @@ function bfs(tree) {
   return result;
 }
 
-// 分行打印
+/**
+ * 分行打印
+ */
 function bfs1(tree) {
   const result = [];
   const stack = [];
@@ -70,6 +75,50 @@ function bfs1(tree) {
 }
 
 /**
+ * @title 之字型打印
+ * @description 奇数层先左后右，偶数层先右后左，遍历某一层层时下一层数据入栈
+ */
+
+function oddAndEvenPrint(tree) {
+  let result = [];
+  let oddStack = [tree];
+  let evenStack = [];
+  let temp = [];
+  while (oddStack.length || evenStack.length) {
+    while (oddStack.length) {
+      const { left, right, value } = oddStack.pop();
+      temp.push(value);
+      if (left) {
+        evenStack.push(left);
+      }
+      if (right) {
+        evenStack.push(right);
+      }
+    }
+    if (temp.length > 0) {
+      result.push(temp);
+      temp = [];
+    }
+    while (evenStack.length) {
+      const { right, left, value } = evenStack.pop();
+      temp.push(value);
+
+      if (right) {
+        oddStack.push(right);
+      }
+      if (left) {
+        oddStack.push(left);
+      }
+    }
+    if (temp.length > 0) {
+      result.push(temp);
+      temp = [];
+    }
+  }
+  return result;
+}
+
+/**
  *  test 
  *  
  *           1
@@ -104,3 +153,4 @@ var tree = {
 
 console.log(bfs(tree));
 console.log(bfs1(tree));
+console.log(oddAndEvenPrint(tree));
