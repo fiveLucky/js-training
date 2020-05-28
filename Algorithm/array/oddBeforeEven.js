@@ -5,6 +5,7 @@
  */
 
 function oddFrontOfEven(arr) {
+  let num = 0;
   if (Array.isArray(arr) && arr.length > 1) {
     let leftPointer = 0;
     let rightPointer = arr.length - 1;
@@ -12,16 +13,21 @@ function oddFrontOfEven(arr) {
     while (leftPointer < rightPointer) {
       while (arr[leftPointer] % 2 === 1) {
         leftPointer++;
+        num++;
       }
       while (arr[rightPointer] % 2 === 0) {
         rightPointer--;
+        num++;
       }
       if (leftPointer < rightPointer) {
         [arr[rightPointer], arr[leftPointer]] = [arr[leftPointer], arr[rightPointer]];
+        // 优化无用的循环次数
+        rightPointer--;
+        leftPointer++;
       }
     }
   }
-  return arr;
+  return [arr, num];
 }
 
 // test
