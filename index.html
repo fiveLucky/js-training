@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .red {
+        background: red;
+        color: red;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    .red {
-      background: red;
-      color: red;
-    }
+      .svg {
+        background: blue;
+      }
 
-    .svg {
-      background: blue;
-    }
+      .text {
+        fill: rgb(75, 73, 71);
+        text-align: center;
+        text-anchor: middle;
+      }
 
-    .text {
-      fill: rgb(75, 73, 71);
-      text-align: center;
-      text-anchor: middle;
-    }
+      .svgImageText {
+        font-size: 30px;
+      }
 
-    .svgImageText {
-      font-size: 30px;
-    }
+      #h {
+        padding: 4px;
+        border: 1px solid #ccc;
+      }
 
-    #h {
-      padding: 4px;
-      border: 1px solid #ccc;
-    }
+      #layout {
+        margin-top: 50%;
+      }
+    </style>
+  </head>
 
-    #layout {
-      margin-top: 50%;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- <div id="div"></div>
+  <body>
+    <!-- <div id="div"></div>
   <svg id="svg" width="200" height="200" class="svg">
     <rect width="100%" height="100%" fill="red" />
     <circle cx="100" cy="100" r="80" fill="#40dfec" />
@@ -55,41 +54,36 @@
     <rect x="10%" y="10%" width="100%" height="100%" style="filter:url(#image);" />
     <text x="50" y="50" fill="red" class="svgImageText">picture</text>
   </svg> -->
-  <div id="layout">
-    sadfdsd
-  </div>
-  <!-- <div id="layout">
+    <div id="layout">
+      sadfdsd
+    </div>
+    <!-- <div id="layout">
     <img src="./asset/img/car.jpeg" class="img" />
   </div> -->
 
+    <script type="module">
+      /**
+       * 报错：
+       * Failed to load module script: The server responded with a
+       * non-JavaScript MIME type of "text/html". Strict MIME type checking
+       * is enforced for module scripts per HTML spec.
+       * 解决方法：
+       * 第一种方式：使用koa-static中间件，自动处理静态文件请求响应
+       * 第二种方式：如果自己处理请求，需要对特定文件类型指定 content-type
+       * */
 
-  <script type="module">
-    /**
-     * 报错：
-     * Failed to load module script: The server responded with a 
-     * non-JavaScript MIME type of "text/html". Strict MIME type checking 
-     * is enforced for module scripts per HTML spec.
-     * 解决方法：
-     * 第一种方式：使用koa-static中间件，自动处理静态文件请求响应
-     * 第二种方式：如果自己处理请求，需要对特定文件类型指定 conten-type
-     * */ 
+      import request from "./Promise/request.js";
+      import waterMark from "./Canvas/waterMark/index.js";
 
-    import request from './Promise/request.js';
-    import waterMark from './Canvas/waterMark/index.js';
+      // Array(25).fill('https://www.baidu.com').forEach((uri,index) => {
+      //   request.get(uri).then(()=> {
+      //     console.info('im ok',index)
+      //   })
+      // });
 
-    // Array(25).fill('https://www.baidu.com').forEach((uri,index) => {
-    //   request.get(uri).then(()=> {
-    //     console.info('im ok',index)
-    //   })
-    // });
+      waterMark.pictureMark("./asset/img/car.jpeg");
+    </script>
 
-    waterMark.pictureMark('./asset/img/car.jpeg')
-  </script>
-
-  <script>
-
-  </script>
-
-</body>
-
+    <script></script>
+  </body>
 </html>
