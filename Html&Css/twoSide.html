@@ -22,20 +22,26 @@
       }
       .leftBlock {
         flex: 1;
-        border: 0.01rem solid coral;
       }
       .rightBlock {
         flex: 1;
-        border: 0.01rem solid cyan;
       }
       .item {
         width: 100%;
         box-sizing: border-box;
         padding: 0.2rem;
-        border-radius: 0.02rem;
+      }
+      .innerBlock {
+        background-color: #eee;
+        border-radius: 0.1rem;
+        padding-bottom: 0.1rem;
+      }
+      .innerBlock div {
+        padding: 0 0.1rem;
       }
       .item img {
         width: 100%;
+        border-radius: 0.1rem;
       }
     </style>
   </head>
@@ -43,36 +49,48 @@
     <div class="container">
       <div class="leftBlock">
         <div class="item">
-          <img src="../asset/img/car.jpeg" alt="" srcset="" />
-          <div class="title">这是汽车哦</div>
-          <div class="desc">this is description</div>
+          <div class="innerBlock">
+            <img src="../asset/img/car.jpeg" alt="" srcset="" />
+            <div class="title">这是汽车哦</div>
+            <div class="desc">this is description</div>
+          </div>
         </div>
         <div class="item">
-          <img src="../asset/img/duck.JPG" alt="" srcset="" />
-          <div class="title">这是汽车哦</div>
-          <div class="desc">this is description</div>
+          <div class="innerBlock">
+            <img src="../asset/img/duck.JPG" alt="" srcset="" />
+            <div class="title">这是汽车哦</div>
+            <div class="desc">this is description</div>
+          </div>
         </div>
         <div class="item">
-          <img src="../asset/img/flower.JPG" alt="" srcset="" />
-          <div class="title">这是汽车哦</div>
-          <div class="desc">this is description</div>
+          <div class="innerBlock">
+            <img src="../asset/img/flower.JPG" alt="" srcset="" />
+            <div class="title">这是汽车哦</div>
+            <div class="desc">this is description</div>
+          </div>
         </div>
       </div>
       <div class="rightBlock">
         <div class="item">
-          <img src="../asset/img/person.JPG" alt="" srcset="" />
-          <div class="title">这是汽车哦</div>
-          <div class="desc">this is description</div>
+          <div class="innerBlock">
+            <img src="../asset/img/person.JPG" alt="" srcset="" />
+            <div class="title">这是汽车哦</div>
+            <div class="desc">this is description</div>
+          </div>
         </div>
         <div class="item">
-          <img src="../asset/img/moon.JPG" alt="" srcset="" />
-          <div class="title">这是汽车哦</div>
-          <div class="desc">this is description</div>
+          <div class="innerBlock">
+            <img src="../asset/img/moon.JPG" alt="" srcset="" />
+            <div class="title">这是汽车哦</div>
+            <div class="desc">this is description</div>
+          </div>
         </div>
         <div class="item">
-          <img src="../asset/img/boat.JPG" alt="" srcset="" />
-          <div class="title">这是汽车哦</div>
-          <div class="desc">this is description</div>
+          <div class="innerBlock">
+            <img src="../asset/img/boat.JPG" alt="" srcset="" />
+            <div class="title">这是汽车哦</div>
+            <div class="desc">this is description</div>
+          </div>
         </div>
       </div>
     </div>
