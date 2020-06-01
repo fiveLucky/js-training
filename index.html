@@ -4,86 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Home</title>
     <style>
-      .red {
-        background: red;
-        color: red;
+      html,
+      body,
+      ul {
+        margin: 0;
+        padding: 0;
       }
-
-      .svg {
-        background: blue;
+      .container {
+        padding: 100px;
       }
-
-      .text {
-        fill: rgb(75, 73, 71);
-        text-align: center;
-        text-anchor: middle;
+      h1 {
+        border-bottom: 1px solid #234000;
+        position: relative;
+        top: -200px;
+        transition: all 1s;
       }
-
-      .svgImageText {
-        font-size: 30px;
+      .show-h1 {
+        transform: translateY(200px);
       }
-
-      #h {
-        padding: 4px;
-        border: 1px solid #ccc;
+      ul {
+        list-style-position: inside;
+        opacity: 0;
+        transition: opacity 2s ease-in;
       }
-
-      #layout {
-        margin-top: 50%;
+      .show-ul {
+        opacity: 1;
       }
     </style>
   </head>
 
   <body>
-    <!-- <div id="div"></div>
-  <svg id="svg" width="200" height="200" class="svg">
-    <rect width="100%" height="100%" fill="red" />
-    <circle cx="100" cy="100" r="80" fill="#40dfec" />
-    <text x="100" y="100" class="text">这是图片</text>
-  </svg>
-
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-      <filter id="image">
-        <feImage xlink:href="./asset/img/car.jpeg" />
-      </filter>
-    </defs>
-
-    <rect x="10%" y="10%" width="100%" height="100%" style="filter:url(#image);" />
-    <text x="50" y="50" fill="red" class="svgImageText">picture</text>
-  </svg> -->
-    <div id="layout">
-      sadfdsd
+    <div class="container">
+      <h1 id="title">Home</h1>
+      <!-- append nav list -->
     </div>
-    <!-- <div id="layout">
-    <img src="./asset/img/car.jpeg" class="img" />
-  </div> -->
 
-    <script type="module">
-      /**
-       * 报错：
-       * Failed to load module script: The server responded with a
-       * non-JavaScript MIME type of "text/html". Strict MIME type checking
-       * is enforced for module scripts per HTML spec.
-       * 解决方法：
-       * 第一种方式：使用koa-static中间件，自动处理静态文件请求响应
-       * 第二种方式：如果自己处理请求，需要对特定文件类型指定 content-type
-       * */
-
-      import request from "./Promise/request.js";
-      import waterMark from "./Canvas/waterMark/index.js";
-
-      // Array(25).fill('https://www.baidu.com').forEach((uri,index) => {
-      //   request.get(uri).then(()=> {
-      //     console.info('im ok',index)
-      //   })
-      // });
-
-      waterMark.pictureMark("./asset/img/car.jpeg");
+    <script>
+      const ul = document.getElementById("nav");
+      nav.classList.add("show-ul");
+      const h1 = document.getElementById("title");
+      h1.classList.add("show-h1");
     </script>
-
-    <script></script>
   </body>
 </html>

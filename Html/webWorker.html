@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebWorker</title>
+  </head>
+  <body>
+    <script>
+      // http://www.ruanyifeng.com/blog/2018/07/web-worker.html
+      const worker = new Worker("../WindowAPI/webWorker.js");
+      worker.postMessage("hello worker!");
+      worker.onmessage = function (e) {
+        alert(e.data);
+      };
+    </script>
+  </body>
+</html>
