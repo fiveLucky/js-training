@@ -6,11 +6,16 @@
     <title>ServiceWorker</title>
   </head>
   <body>
+    <button id="btn">
+      fetch
+    </button>
     <script>
+      //  参考 https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API
+      // 这里只做简单的了解，具体深入钻研以后再说吧
       if (navigator.serviceWorker) {
         addEventListener("load", function () {
           navigator.serviceWorker
-            .register("../WindowAPI/serviceWorker.js", { scope: "../" })
+            .register("/WindowAPI/serviceWorker.js", { scope: "../" })
             .then((serviceWorkerInstance) => {
               console.log("Service Worker has registered now! In scope: ", serviceWorkerInstance.scope);
             })
@@ -19,6 +24,24 @@
             });
         });
       }
+
+      console.log(caches);
+    </script>
+    <script type="module">
+      import request from "../Promise/Request.js";
+      const btn = document.getElementById("btn");
+      btn.onclick = function () {
+        // request
+        request.get("../data").then((res) => {
+          console.log(res.slice(0, 30));
+        });
+      };
+      navigator.serviceWorker.addEventListener("message", (e) => {
+        alert(e.data);
+        if (e.data === "refetch") {
+          btn.click();
+        }
+      });
     </script>
   </body>
 </html>

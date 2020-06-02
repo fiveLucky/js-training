@@ -25,6 +25,25 @@ function appendNav() {
 app.use(koaStatic(__dirname, { defer: true }));
 
 app.use((ctx, next) => {
+  // 设置 service worker scope 范围
+  ctx.append("Service-Worker-Allowed", ["/"]);
+  next();
+});
+
+app.use((ctx, next) => {
+  if (ctx.url === "/data") {
+    const { query } = ctx;
+    // if (query.id === 1) {
+    ctx.type = "application/json";
+    ctx.body = [1, 3, 4, 5];
+    // } else {
+    //   ctx.body = "no param";
+    // }
+  }
+  next();
+});
+
+app.use((ctx, next) => {
   const { url } = ctx;
   if (url === "/" || url === "/index.html") {
     let indexHtmlContent = fs.readFileSync(__dirname + "/index.html", "utf8");
