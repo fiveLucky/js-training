@@ -27,10 +27,8 @@ function preOrderTraversal(tree) {
   // 存储每个父节点，目的为了得到右节点
   const stack = [];
   let current = tree;
-  let i = 0;
 
   while (current || stack.length) {
-    i++;
     while (current) {
       result.push(current.value);
       // 优化，减少不必要的循环
