@@ -23,4 +23,4 @@ function addToTarget(arr, target) {
 var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 console.log(addToTarget(arr, 9));
 var arr1 = [3, 2, 4, 5, 10, 7, 8, 9];
-console.log(addToTarget(arr1, 10));
+console.log(addToTarget(arr1, 11));
