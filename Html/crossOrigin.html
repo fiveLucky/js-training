@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrossOrigin</title>
+  </head>
+  <body>
+    <script type="module">
+      /**
+       * 跨域
+       *
+       * 跨域是浏览器同源策略的限制，但是通过服务端在 Response Header里面设置 Access-Control—Allow-Origin:* 就可以允许跨域访问
+       * 在跨域请求时，
+       * 1、浏览器会先发送一个 option 请求做预检，
+       * 2、然后再发送真实请求，
+       * 3、这时服务器会收到请求并返回响应的数据，
+       * 4、但是浏览器会检测 Response Header 发现没有对应的字段，就拦截了返回值。
+       *
+       * refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+       */
+      import request from "../Promise/Request.js";
+
+      request.post("http://localhost:4002/api/tag/create").then((res) => {
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>

@@ -24,10 +24,10 @@ function appendNav() {
 // 第一种方式：使用koa-static中间件
 app.use(koaStatic(__dirname, { defer: true }));
 
-app.use((ctx, next) => {
+app.use(async (ctx, next) => {
   // 设置 service worker scope 范围
   ctx.append("Service-Worker-Allowed", ["/"]);
-  next();
+  await next();
 });
 
 app.use((ctx, next) => {
@@ -43,7 +43,7 @@ app.use((ctx, next) => {
   next();
 });
 
-app.use((ctx, next) => {
+app.use(async (ctx, next) => {
   const { url } = ctx;
   if (url === "/" || url === "/index.html") {
     let indexHtmlContent = fs.readFileSync(__dirname + "/index.html", "utf8");
@@ -51,12 +51,12 @@ app.use((ctx, next) => {
     indexHtmlContent = indexHtmlContent.replace("<!-- append nav list -->", ul);
     ctx.body = indexHtmlContent;
   }
-  next();
+  await next();
 });
 
-app.use((ctx, next) => {
+app.use(async (ctx, next) => {
   console.log(ctx.url);
-  next();
+  await next();
 });
 
 // 第二种方式：设置响应

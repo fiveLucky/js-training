@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyLoad</title>
+    <style lang="css">
+      .container {
+        position: absolute;
+        bottom: -2000px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 200px;
+        border: 1px solid #234000;
+      }
+      img {
+        margin-bottom: 100px;
+        width: 200px;
+        height: 150px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img data-src="../asset/img/duck.JPG" class="lazy" alt="" />
+      <img data-src="../asset/img/boat.JPG" class="lazy" alt="" />
+      <img data-src="../asset/img/flower.JPG" class="lazy" alt="" />
+      <img data-src="../asset/img/person.JPG" class="lazy" alt="" />
+      <img data-src="../asset/img/moon.JPG" class="lazy" alt="" />
+    </div>
+
+    <script type="module">
+      import lazyLoad from "../Practice/lazyLoad.js";
+      lazyLoad();
+    </script>
+  </body>
+</html>
