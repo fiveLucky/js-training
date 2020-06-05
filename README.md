@@ -4,5 +4,13 @@ Grip on js based
 
 ## description
 
-深入理解原生支持的各种方法实现原理，以及一些工具库的优雅实现
-salfjkdsfdslka
+- 基础知识深入理解
+- 算法练习
+- 常用工具函数
+- 原生高阶 API
+
+## Start
+
+`yarn && yarn run start`
+
+`访问 http://localhost:4000/`
