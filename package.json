@@ -23,6 +23,8 @@
     "koa-static": "^5.0.0"
   },
   "dependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7",
+    "socket.io": "^2.3.0"
   }
 }
