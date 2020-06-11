@@ -13,6 +13,9 @@ const socketServer = require("./Server/socketServer.js");
 
 const menu = require("./Server/menuMD.js");
 
+// webSocket
+socketServer(server);
+
 // 第一种方式：使用koa-static中间件
 app.use(koaStatic(__dirname, { defer: true }));
 
@@ -45,6 +48,3 @@ server.listen(4000, () => {
   // 打开默认浏览器
   // exec(" open http://localhost:4000")
 });
-
-// webSocket
-socketServer(server);

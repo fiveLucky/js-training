@@ -17,19 +17,32 @@
 
 export default function ws() {
   // socket.io
-  const socket = window.io({
-    path: "/socket/test",
-  });
-  socket.on("time", (data) => {
-    console.log("client receive server's time:" + data);
-  });
-
-  socket.emit("time", Date.now());
+  // const socket = window.io("/test");
+  // socket.on("time", (data) => {
+  //   console.log("client receive server's time:" + data);
+  // });
+  // socket.on("room1", (data) => {
+  //   console.log("room1:" + data);
+  // });
+  // socket.emit("time", Date.now());
   const btn = document.getElementById("btn");
-
+  // btn.onclick = sendMsg;
+  // function sendMsg() {
+  //   console.log("send msg");
+  //   socket.emit("time", Date.now());
+  // }
+  const room = window.io("/chat-room");
+  room.on("room1", (data) => {
+    console.log("room receive server's time:" + data);
+  });
+  room.on("room2", (data) => {
+    console.log("room2 receive server's time:" + data);
+  });
+  console.log(room);
   btn.onclick = sendMsg;
   function sendMsg() {
     console.log("send msg");
-    socket.emit("time", Date.now());
+    room.emit("room1", Date.now());
+    room.emit("room2", Date.now());
   }
 }
