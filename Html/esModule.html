@@ -9,6 +9,44 @@
   </head>
 
   <body>
+    <div id="level1">
+      <div id="level2">
+        <div id="level3">冒泡和捕获</div>
+      </div>
+    </div>
+
+    <input id="input" type="text" oninput="input" onchange="change" />
+    <script>
+      document.getElementById("input").oninput = input;
+      document.getElementById("input").onchange = change;
+      function input() {
+        alert("sdfds");
+      }
+      function change() {
+        alert("342545");
+      }
+      document.getElementById("level1").addEventListener(
+        "click",
+        () => {
+          alert("level1");
+        },
+        false
+      );
+      document.getElementById("level2").addEventListener(
+        "click",
+        () => {
+          alert("level2");
+        },
+        false
+      );
+      document.getElementById("level3").addEventListener(
+        "click",
+        () => {
+          alert("level3");
+        },
+        false
+      );
+    </script>
     <script type="module">
       /**
        * ESModule 主流浏览器已经原生支持，type=module
