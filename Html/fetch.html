@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch</title>
+  </head>
+  <body>
+    <script>
+      fetch("/Promise/index.js").then((res) => {
+        const data = res.text();
+        console.log(data);
+        return data;
+      }).then(res => {
+        // console.log(res,'res')
+      }).finally((...arg) => {
+        console.log(arg,'arg')
+        throw new Error('error')
+        return 'finally'
+      }).then(res => {
+        console.log(res,'res')
+      }).catch(err => {
+        console.log(err,'err')
+      })
+    </script>
+  </body>
+</html>
